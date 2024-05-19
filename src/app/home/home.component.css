@@ -1,0 +1,331 @@
+#home{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 0.5s;
+}
+
+#home .search{
+    width: 80%;
+    height: 300px;
+    margin: 20px auto;
+    /* background-color: aquamarine; */
+}
+#home .search h1{
+    width: 100%;
+    color: white;
+    margin-left: 3rem;
+    padding-top: 2rem;
+    font-size: 50px;
+}
+#home .input-fieldse{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* background-color: blueviolet; */
+}
+#home .input-fieldse input{
+    width: 60%;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    font-size: 17px;
+    padding-left: 10px;
+    margin-left:  3rem;
+}
+#home .input-fieldse .searbtn{
+    width: 180px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    background-color:lightseagreen;
+}
+#home .input-fieldse .searbtn i{
+    font-size: 25px;
+    width: 28px;
+    color: white;
+    margin-top: 0.7rem;
+    margin-left: 1.9rem;
+    height: 50px;
+}
+#home .input-fieldse .searbtn button{
+    width: 100px;
+    height: 50px;
+    color: white;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background-color: lightseagreen;
+}
+#home .input-field11{
+    width: 80%;
+    height: 50px;
+    margin-left: 3rem;
+    /* background-color: aqua; */
+}
+#home .input-field11 input[type=checkbox]:nth-child(even){
+    margin-left: 2rem;
+}
+::placeholder{
+    padding-left: 10px;
+}
+#home .input-field11 select{
+    width: 250px;
+    height: 35px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    margin-left: 3rem;
+}
+#home .input-field11 label{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: white;
+}
+#home .search .button1 button{
+    width: 200px;
+    height: 50px;
+    background-color: lightseagreen;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    margin:1rem 25rem;
+    color: white;
+}
+
+
+/* Rgister CSS */
+
+.regi{
+    width: 40%;
+    height: 900px;
+    background-color: white;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    box-shadow: 0px 0px 8px black;
+}
+.regi .titlere{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: lightseagreen;
+}
+.regi .titlere label:nth-child(odd){
+     color: white;
+     margin: 10px 2rem;
+     font-size: 30px;  
+}
+.regi .titlere i{
+    color: white;
+    font-size: 25px;
+    margin:15px 20rem;
+}
+form .regflex{
+    width: 100%;
+    height: 550px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+form .regflex .profile{
+    width: 40%;
+    height: 200px;
+    background-color: white;
+}
+
+form .regflex .profile .image{
+    width: 90% !important;
+    margin: 0 auto;
+    height: 200px;
+    /* background-color: white; */
+    border: 1px solid black;
+    margin-bottom: 10px;  
+}
+form .regflex .profile p input[type=file]{
+   border: none;
+   background-color: white;
+   width: 180px;
+   height: 50px;
+   margin-left: 10px;
+
+}
+form .regflex .profile .image img{
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto;
+    background-color: aqua;
+    background-size: contain;
+}
+.regi .regflex .inpb{
+    width: 60%;
+    height: 550px;
+    /* background-color: black; */    
+}
+.regi .regflex .inpb .input-field{
+    width: 100%;
+    height: 45px;
+    margin-top: 0px;
+    /* background-color: brown;  */
+}
+
+.regi .regflex .inpb .input-field input{
+    width: 94%;
+    height: 40px;
+}
+.regi .regflex .inpb .input-field:nth-child(even){
+    width: 100%;
+    height: 45px;
+    margin-top: 2rem;
+    /* background-color: brown;  */
+}
+.regi .regflex .inpb .input-field1{
+    width: 98%;
+    height: 45px;
+    margin-top: 20px;
+    /* background-color: brown; */
+}
+.input-field1 input{
+    width: 96%;
+    height: 40px;
+}
+.regi .regflex .inpb .input-field2{
+    width: 100%;
+    height: 40px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    flex-direction: row;
+   
+}
+.regi .regflex .inpb .input-field2 input[type=range]{
+    width: 74%;
+    height: 30px;
+    margin-top: 10px;
+
+}
+.regi .regflex .inpb .input-field2 .label{
+    width: 15%;
+    height: 30px;
+    font-size: 20px;
+    margin:20px  0px;
+}
+.regi .regflex .inpb .input-field22{
+    width: 100%;
+    height: 40px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    gap: 10rem;
+    flex-direction: row;
+}
+.regi .regflex .inpb .input-field22 label{
+    width: 20%;
+    height: 30px;
+    font-size: 17px;
+    text-align: end;
+    margin-left: 10px;
+    /* background-color: rebeccapurple; */
+}
+
+.regi .regflex .inpb .input-field1 input[type=range]{
+    width: 80%;
+    height: 30px;
+    margin-top: 20px;
+}
+.regi .regflex .inpb .input-field1 select{
+    width: 97%;
+    height: 35px;
+    margin:5px 0px;
+}
+.regi .regflex .inpb .hobbies{
+    width: 100%;
+    height: 120px; 
+    margin-top: 2rem;
+    /* background-color: brown;  */
+}
+.regi .regflex .inpb .hobbies input{
+    width: 50%;
+    height: 30px;
+    margin-top: 10px;
+}
+.regi .regflex .inpb .hobbies button{
+    width: 80px;
+    height: 30px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: white;
+    background-color: lightseagreen;
+}
+.regi .regflex .inpb .hobbies ul li{
+    list-style: none;
+    font-size: 17px;
+}
+.regi .regflex .inpb .hobbies ul li i{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.regi .regflex .inpb .check1{
+    width: 100%;
+    height: 40px;
+    /* background-color:rebeccapurple;  */
+    display: flex;
+    flex-direction: row;
+    margin-top: 0rem;
+} 
+.regi .regflex .inpb .check1 .checkbox1{
+    width: 20px;
+    margin-top: 0px;
+}
+.regi .regflex .inpb .check1 label{
+    width: 200px;
+    margin: 10px;
+    font-size: 17px;
+    color:darkgray;
+}
+.regi .regflex .inpb .subbtn{
+    width: 80%;
+    height: 45px;
+    margin-left: 4rem;
+    margin-top: 0.5rem;
+    /* background-color: red;  */
+}
+.regi .regflex .inpb .subbtn button{
+    width: 40%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: darkgray;
+    margin-left: 10px;
+    border: 0.5px solid gray;
+}
+.regi .regflex .inpb .subbtn button:nth-child(even){
+    width: 40%;
+    height: 40px;
+    margin-left: 2rem;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: white;
+    background-color: lightseagreen;
+}
+.ng-invalid.ng-touched {
+    width: 100%;
+    height: 30px;
+    /* background-color: aqua; */
+    border-color: red;
+  }
+  .div {
+    color: red;
+  }
+  

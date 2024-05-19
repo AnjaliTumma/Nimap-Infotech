@@ -1,0 +1,191 @@
+
+
+<div class="banner">
+   <!-- ******* home ******** -->
+
+  <div id="home">
+   <div class="search">
+     <h1>I'm looking for...</h1>
+     <div class="input-fieldse">
+         <input type="text" placeholder="Enter Job Description">
+         <div class="searbtn">
+           <i class="fa-solid fa-magnifying-glass"></i>
+           <button>Search</button>
+         </div>
+     </div>
+     <div class="input-field11">
+       <input type="checkbox" class="checkbox1"><label>Full Time</label> 
+       <input type="checkbox" class="checkbox1"><label>Part Type /Casual/ Freelance</label>
+       <select>
+         <option>Select Your Location</option>
+         <option>Mumbai</option>
+         <option>Pune</option>
+         <option>Solapur</option>
+       </select>
+     </div>
+     <div class="button1" >
+       <button (click)="show=!show" >Register</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div class="regi" [ngStyle]="{'display':show ? 'block':'none'}">
+  <div class="titlere">
+      <label>Register</label>
+      <div [ngStyle]="{'display':show1 ? 'block':'none'}"></div>
+      <i class="fa-regular fa-circle-xmark" (click)="show1!=show1"></i>
+      
+  </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" id="registrationForm">
+      <div class="regflex">
+          <div class="profile">
+              <div [innerHtml]='msg' *ngIf="msg" style="color: red;" id="photo">
+              </div>
+            <div class="image">
+                  <img [src]="url" *ngIf="url">
+            </div>
+            <div *ngIf="photoError" style="color: red;margin-left: 10px;" id="photo">{{ photoError }}</div>
+            
+            <p>
+              <input type="file" (change)="selectFile($event)" id="photo1" formControlName="photo1">
+            </p>
+            <div class="div" *ngIf="registrationForm.get('photo1')?.errors?.['required'] && registrationForm.get('photo1')?.touched">
+              Photo is required.
+            </div>
+          </div>
+
+          <div class="inpb">
+              <div class="input-field">
+                <label for="firstName" style="color: white; font-size: 0px;">First Name</label>
+                  <input type="text" placeholder="First Name" id="firstName"  formControlName="firstName" >
+                  <div *ngIf="registrationForm.get('firstName')?.errors?.['invalidFirstName']" class="div">
+                      First name must be alphabetic and not exceed 20 characters.
+                  </div>
+                  <div  class="div" *ngIf="registrationForm.get('firstName')?.errors?.['required'] && registrationForm.get('firstName')?.touched">
+                      First name is required.
+                  </div>
+              </div>
+
+              <div class="input-field">
+                <label for="lastName" style="color: white; font-size: 0px;">Last Name</label>
+                <input type="text" placeholder="Last Name" id="lastName"  formControlName="lastName" >
+               
+                <div class="div" *ngIf="registrationForm.get('lastName')?.errors?.['required'] && registrationForm.get('lastName')?.touched">
+                    Last name is required.
+                </div>
+              </div>
+             
+              <div class="input-field1">
+                <label for="email" style="color: white; font-size: 0px;">Email</label>
+                  <input type="email" placeholder="Email" formControlName="email" id="email">
+                  <div class="div" *ngIf="registrationForm.get('email')?.errors?.['required'] && registrationForm.get('email')?.touched">
+                      Email is required.
+                  </div>
+              </div>
+
+              <div class="input-field1">
+                <label for="mobile" style="color: white; font-size: 0px;">Mobile</label>
+                  <input type="text" placeholder="(541) 754-3010" formControlName="mobile" id="mobile" >
+                  <div class="div" *ngIf="registrationForm.get('mobile')?.errors?.['maxlength']">
+                    Mobile Number cannot exceed 10 numbers.
+                  </div>
+                  <div class="div" *ngIf="registrationForm.get('mobile')?.errors?.['required'] && registrationForm.get('mobile')?.touched">
+                    Mobile Number is required.
+                  </div>
+              </div>
+              <div class="input-field2">
+                    <label for="age" class="label">Age: {{ registrationForm.get('age')?.value }}</label>
+                    <input id="age" type="range" formControlName="age" min="20" max="60">
+                    <div  *ngIf="registrationForm.get('age')?.errors?.['required'] && registrationForm.get('age')?.touched">
+                      Age is required.
+                    </div>
+                   
+              </div>
+ 
+              <div class="input-field1" style="margin-top: 30px;">
+                <label for="state">State</label>
+                  <select formControlName="selectedOption" id="selectedOption">
+                      <option disabled selected>State</option>
+                      <option>Maharashtra</option>
+                      <option>Madhya Pradesh </option>
+                      <option>Karnataka</option>
+                      <option>Kerala</option>
+                      <option>Andhra Pradesh</option>
+                      <option>Arunachal Pradesh</option>
+                      <option>Assam</option>
+                      <option>Bihar</option>
+                      <option>Gujarat</option>
+                      <option>Haryana</option>
+                      <option>Himachal Pradesh</option>
+                      <option>Odisha</option>
+                  </select>
+                  <div class="div" *ngIf="registrationForm.get('selectedOption')?.errors?.['required'] && registrationForm.get('selectedOption')?.touched">
+                    State is required.
+                  </div>
+                  
+              </div>
+              <div class="input-field1" style="margin-top: 35px;">
+                <label for="country" >Country</label>
+                  <select formControlName="selectedOption1" id="selectedOption1">
+                      <option disabled  selected>Country</option>
+                      <option>India</option>
+                      <option>China </option>
+                      <option>United States</option>
+                      <option>Indonesia</option>
+                      <option>Pakistan</option>
+                      <option>Bangladesh</option>
+                      <option>Japan</option>
+                      <option>Iran</option>
+                      <option>Thailand</option>
+                      <option>France</option>
+                      <option>South Africa</option>
+                      <option>Italy</option>
+                  </select>
+                  <div class="div" *ngIf="registrationForm.get('selectedOption1')?.errors?.['required'] && registrationForm.get('selectedOption1')?.touched">
+                    Country is required.
+                  </div>
+               </div> 
+              <div class="input-field1">
+                <label for="address" style="color: white; font-size: 0px;">Address</label>
+                  <input type="text" placeholder="Address" formControlName="address" id="address" style="margin-top: 1rem;">
+                  <div class="div" *ngIf="registrationForm.get('address')?.errors?.['maxlength']">
+                    Address cannot exceed 30 characters.
+                  </div>
+                  <div class="div" *ngIf="registrationForm.get('address')?.errors?.['required'] && registrationForm.get('address')?.touched">
+                    Address is required.
+                  </div>
+                 
+              </div>
+              <div class="input-field1">
+                <label for="tags" style="color: white; font-size: 0px;">Tags</label>
+                  <input type="text" placeholder="Tags" formControlName="tags" id="tags" style="margin-top: 1rem;">
+                  <div class="div" *ngIf="registrationForm.get('tags')?.errors?.['maxlength']">
+                    Tags cannot exceed 10 characters.
+                  </div>
+                  <div class="div" *ngIf="registrationForm.get('tags')?.errors?.['required'] && registrationForm.get('tags')?.touched">
+                    Tag is required.
+                  </div>
+              </div>
+              <div class="hobbies">
+                  <h3>{{title}}</h3>
+                  <input type="text" placeholder="" #task id="hobbies">
+                       <button (click)="addTask(task.value)">Add</button> 
+                      <ul *ngFor="let item of list">
+                      <li>{{item.name}}<i class="fa-solid fa-xmark" (click)="removeTask(item.id)"></i></li> 
+                      </ul>
+                     
+              </div>
+              <div class="check1">
+                  <input type="checkbox" id="checkbox">
+                  <label>Subscribe to newsletter</label>
+              </div>
+              <div class="subbtn">
+                <button>Cancel</button>
+                 <button type="submit" type="submit">Submit</button>
+              </div>
+          </div>
+          
+      </div>
+    </form>
+</div>

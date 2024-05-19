@@ -1,0 +1,69 @@
+#client{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 0.5s;
+}
+#client .b4{
+    width: 60%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 20rem;
+    /* background-color:green; */
+}
+#client .b4 i{
+    width:50px;
+    height: 50px;
+    font-size: 30px;
+    margin-left: 3rem;
+    color: lightseagreen;
+}
+#client .b4 .whib{
+    width: 200px;
+    height: 30px;
+    background-color: white;
+}
+#client .b44{
+    width: 60%;
+    height: 60px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+   margin-left: 23rem;
+}
+#client .b44 p{
+    width: 50%;
+    height: 60px;
+    font-size: 21px;
+}
+#client .b44 .icons{
+    width: 40%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#client .b44 .icons .i1{
+    width: 100px;
+    height: 25px;
+    padding-top: 10px;
+    text-align: center;
+    background-color: aliceblue;
+}
+#client .b44 .icons .i1:nth-child(odd){
+    width: 100px;
+    height: 25px;
+    color: white;
+    text-align: center;
+    border: 0.5px solid lightgrey;
+    background-color: lightseagreen;
+}
+
+.banner{
+    width: 100%;
+    height: calc(100vh - 60px);
+}
