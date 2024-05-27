@@ -30,13 +30,36 @@
     /* background-color:blue; */
 }
 .userbox .profileb .profilebox .profimage{
-    width: 310px;
+    width: 250px;
     height: 200px;
     margin: 0px auto;
     border: 2px solid black;
 }
+.userbox .profileb .profilebox .profimage .image{
+    width: 100% !important;
+    margin: 0 auto;
+    height: 200px;
+    /* background-color: white; */
+    /* border: 1px solid black; */
+    margin-bottom: 10px;  
+}
+.userbox .profileb .profilebox .profimage input[type=file]{
+   border: none;
+   background-color: white;
+   width: 180px;
+   height: 50px;
+   margin-left: 10px;
+
+}
+.userbox .profileb .profilebox .profimage .image img{
+    width: 100% !important;
+    height: 95% !important;
+    margin: 0 auto;
+    /* background-color: aqua; */
+    background-size: contain;
+}
 .userbox .profileb .profilebox .profbtn button{
-    width: 100px;
+    width: 90px;
     height: 40px;
     margin-left: 4rem;
     margin-top: 20px;

@@ -7,6 +7,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
 import { UserComponent } from './user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 export const routes: Routes = [

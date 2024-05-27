@@ -23,7 +23,7 @@ export class HomeComponent {
   title='Hobbies';
   url: any; 
   msg = "";
-	
+  usersArr:any=[]
 
   private changeResult=20;
   private dragResult=60;
@@ -42,26 +42,37 @@ export class HomeComponent {
     console.log(id)
     this.list=this.list.filter(item=>item.id!==id)
   }
-  
+  showForm(){
+    this.show=!this.show
+  }
   
   registrationForm: FormGroup;
   photoError: string | null = null;
   photo1:any;
-
+  addressType: string | null = null;
+  userPhoto: string | ArrayBuffer | null = null;
+  
   constructor(private fb: FormBuilder,private userService: UserService, private router: Router) {
     this.registrationForm = this.fb.group({
       firstName: ['', [Validators.required, this.firstNameValidator]],
-      lastName: ['', [Validators.required, Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.maxLength(10)]],
-      photo1: [null, [Validators.required]],
-      age: [20, [Validators.required, Validators.min(20), Validators.max(60)]],
-      address:['',[Validators.required, Validators.maxLength(30)]],
-      tags:['',[Validators.required,Validators.maxLength(10)]],
-      selectedOption: ['', Validators.required],
-      selectedOption1: ['', Validators.required],
+      lastName: [''],
+      email:[''],
+      mobile:[''],
+      selectedOption:[''],
+      selectedOption1:[''],
+      addressType:[''],
+      address1: [''],
+      address2: [''],
+      tags:[''],
+      hobbies:[''],
+      photo1: [null],
+      age: [20, [ Validators.min(20), Validators.max(60)]],
+     
     });
   }
+  
+
+    // FirstName Function
 
   firstNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const value = control.value;
@@ -69,26 +80,33 @@ export class HomeComponent {
     return valid ? null : { 'invalidFirstName': true };
   }
   
-  selectFile(event: any) { 
+  // File Upload
+
+  selectFile(event: any):void { 
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
+			// this.msg = 'You must select an image';
 			return;
 		}
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       const img = new Image();
-      img.onload = () => {
-        if (img.width !== 310 || img.height !== 325) {
-          this.registrationForm.patchValue({ photo: null });
-        } else {
-          this.registrationForm.patchValue({ photo: file });
-        }
-      };
       img.src = URL.createObjectURL(file);
-    }
 
-		
-		var mimeType = event.target.files[0].type;
+      img.onload = () => {
+        if (img.width === 310 && img.height === 310) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.photo1 = reader.result;
+            this.photoError = null;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          this.photoError = 'Photo must be 310x325 pixels';
+          this.photo1 = null;
+        }
+      };   
+    }
+    
 		var reader = new FileReader();
 		reader.readAsDataURL(event.target.files[0]);
 		
@@ -101,13 +119,33 @@ export class HomeComponent {
 
   }
 
+   // Address Function
 
-  onSubmit() {   
-    if (this.registrationForm.valid) {
-      this.userService.setUser(this.registrationForm.value);
-      this.router.navigate(['/user']);
+  onAddressTypeChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const addressType = selectElement.value;
+    this.addressType = addressType;
+
+    if (addressType === 'Home') {
+      this.registrationForm.addControl('address1', this.fb.control(''));
+      this.registrationForm.addControl('address2', this.fb.control(''));
+      this.registrationForm.removeControl('companyAddress1');
+      this.registrationForm.removeControl('companyAddress2');
+    } else if (addressType === 'Company') {
+      this.registrationForm.addControl('companyAddress1', this.fb.control(''));
+      this.registrationForm.addControl('companyAddress2', this.fb.control(''));
+      this.registrationForm.removeControl('address1');
+      this.registrationForm.removeControl('address2');
     }
+  }
 
+  onSubmit(data:any) {   
+   
+      this.userService.setUser(data).subscribe((result)=>{
+        console.log(result);
+        this.router.navigate(['/user']);
+      })
+     
   }
  
 }

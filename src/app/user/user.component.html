@@ -5,25 +5,40 @@
     </div>
     <div class="profileb">
         <div class="profilebox">
-            <div class="profimage"> 
+            <div class="profimage"  *ngIf="user"> 
                 <label> {{ user.photo1 }}</label>
+                <img  [src]="user.photo1"  width="150">
+              
+                <!-- <div class="image">
+                    <img [src]="url" >
+              </div>
+              <p>
+                
+                <input type="file" (change)="selectFile($event)" id="photo1" >
+              </p> -->
+              <!-- <button (click)="fileInput.click()">Edit Photo</button> 
+               <input type="file" #fileInput (change)="onFileSelected($event)" >
+           -->
+
             </div>
             <div class="profbtn">
-                <button>Edit Photo</button>
-                <button>Edit Photo</button>
+                <button (click)="fileInput.click()">Edit Photo</button>
+                <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+                 <button>Edit Photo</button>
             </div>
         </div>
         <div class="infobox">
-            <div class="des">
+            <div class="des" *ngIf="user">
                 <label>I'm {{ user.firstName }} </label>
                 <label> {{ user.lastName }}</label>
-                <label> and I'm above{{ user.age }}  years and </label>
-                <label> you can send your emails to <br>
-                    <span>{{ user.email }}.</span></label>
+                <label> and I'm above {{ user.age }}  years and </label>
+                <label> you can send your emails to </label><br>
+                <label style="color: blue;">{{ user.email }}.</label>
                 <label> I live in the state of {{ user.selectedOption }}.</label>
-                <label> I like to play </label>
+                <label> I like to play {{user.hobbies}}</label>
                 <label> And please send me newsletter.</label>
                 <label> Please reach out to me on my phone number. {{ user.mobile }}</label>
+               
             </div>
             <div class="descbtn">
                 <button>I Agree</button>

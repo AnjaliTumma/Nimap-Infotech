@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "0892",
+      "firstName": "Anjali",
+      "lastName": "",
+      "email": "",
+      "mobile": "",
+      "selectedOption": "",
+      "selectedOption1": "",
+      "addressType": "",
+      "address1": "",
+      "address2": "",
+      "tags": "",
+      "hobbies": "",
+      "photo1": "C:\\fakepath\\earth-space-stars-sunrise-wallpaper-thumb.jpg",
+      "age": 20
+    },
+    {
+      "id": "3a3c",
+      "firstName": "Anjali",
+      "lastName": "Tumma",
+      "email": "tummaanju@gmail.com",
+      "mobile": "8794653210",
+      "selectedOption": "Maharashtra",
+      "selectedOption1": "India",
+      "addressType": "",
+      "address1": "",
+      "address2": "",
+      "tags": "",
+      "hobbies": "Cricket",
+      "photo1": "C:\\fakepath\\earth-space-stars-sunrise-wallpaper-thumb.jpg",
+      "age": 20
+    }
+  ]
+}

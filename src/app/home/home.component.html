@@ -33,32 +33,29 @@
 <div class="regi" [ngStyle]="{'display':show ? 'block':'none'}">
   <div class="titlere">
       <label>Register</label>
-      <div [ngStyle]="{'display':show1 ? 'block':'none'}"></div>
-      <i class="fa-regular fa-circle-xmark" (click)="show1!=show1"></i>
+      <div></div>
+      <i class="fa-regular fa-circle-xmark" (click)="showForm()"></i>
       
   </div>
-  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" id="registrationForm">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)" id="registrationForm">
       <div class="regflex">
           <div class="profile">
-              <div [innerHtml]='msg' *ngIf="msg" style="color: red;" id="photo">
+              <div style="color: red;" id="photo">
               </div>
             <div class="image">
-                  <img [src]="url" *ngIf="url">
+                  <img [src]="url" >
             </div>
-            <div *ngIf="photoError" style="color: red;margin-left: 10px;" id="photo">{{ photoError }}</div>
-            
             <p>
+              <label for="photo1">Photo:</label>
               <input type="file" (change)="selectFile($event)" id="photo1" formControlName="photo1">
             </p>
-            <div class="div" *ngIf="registrationForm.get('photo1')?.errors?.['required'] && registrationForm.get('photo1')?.touched">
-              Photo is required.
-            </div>
-          </div>
+            <div *ngIf="photoError" style="color: red;margin-left: 10px;" id="photo" >{{ photoError }}</div> 
 
+          </div>
           <div class="inpb">
               <div class="input-field">
                 <label for="firstName" style="color: white; font-size: 0px;">First Name</label>
-                  <input type="text" placeholder="First Name" id="firstName"  formControlName="firstName" >
+                  <input type="text" placeholder="First Name" id="firstName"  formControlName="firstName" name="firstName">
                   <div *ngIf="registrationForm.get('firstName')?.errors?.['invalidFirstName']" class="div">
                       First name must be alphabetic and not exceed 20 characters.
                   </div>
@@ -69,43 +66,29 @@
 
               <div class="input-field">
                 <label for="lastName" style="color: white; font-size: 0px;">Last Name</label>
-                <input type="text" placeholder="Last Name" id="lastName"  formControlName="lastName" >
-               
-                <div class="div" *ngIf="registrationForm.get('lastName')?.errors?.['required'] && registrationForm.get('lastName')?.touched">
-                    Last name is required.
-                </div>
+                <input type="text" placeholder="Last Name" id="lastName"  formControlName="lastName" name="lastName" >
               </div>
              
               <div class="input-field1">
                 <label for="email" style="color: white; font-size: 0px;">Email</label>
-                  <input type="email" placeholder="Email" formControlName="email" id="email">
-                  <div class="div" *ngIf="registrationForm.get('email')?.errors?.['required'] && registrationForm.get('email')?.touched">
-                      Email is required.
-                  </div>
+                  <input type="email" placeholder="Email"  id="email" formControlName="email" name="email">
               </div>
 
               <div class="input-field1">
                 <label for="mobile" style="color: white; font-size: 0px;">Mobile</label>
-                  <input type="text" placeholder="(541) 754-3010" formControlName="mobile" id="mobile" >
-                  <div class="div" *ngIf="registrationForm.get('mobile')?.errors?.['maxlength']">
-                    Mobile Number cannot exceed 10 numbers.
-                  </div>
-                  <div class="div" *ngIf="registrationForm.get('mobile')?.errors?.['required'] && registrationForm.get('mobile')?.touched">
-                    Mobile Number is required.
-                  </div>
+                  <input type="text" placeholder="(541) 754-3010"  id="mobile" formControlName="mobile" name="mobile">
               </div>
               <div class="input-field2">
                     <label for="age" class="label">Age: {{ registrationForm.get('age')?.value }}</label>
-                    <input id="age" type="range" formControlName="age" min="20" max="60">
+                    <input id="age" type="range" formControlName="age" min="20" max="60" name="age">
                     <div  *ngIf="registrationForm.get('age')?.errors?.['required'] && registrationForm.get('age')?.touched">
                       Age is required.
-                    </div>
-                   
+                    </div>            
               </div>
  
               <div class="input-field1" style="margin-top: 30px;">
-                <label for="state">State</label>
-                  <select formControlName="selectedOption" id="selectedOption">
+                <label for="state" style="font-weight: bold;">State</label>
+                  <select id="selectedOption" formControlName="selectedOption" name="selectedOption">
                       <option disabled selected>State</option>
                       <option>Maharashtra</option>
                       <option>Madhya Pradesh </option>
@@ -120,14 +103,10 @@
                       <option>Himachal Pradesh</option>
                       <option>Odisha</option>
                   </select>
-                  <div class="div" *ngIf="registrationForm.get('selectedOption')?.errors?.['required'] && registrationForm.get('selectedOption')?.touched">
-                    State is required.
-                  </div>
-                  
               </div>
               <div class="input-field1" style="margin-top: 35px;">
-                <label for="country" >Country</label>
-                  <select formControlName="selectedOption1" id="selectedOption1">
+                <label for="country" style="font-weight: bold;">Country</label>
+                  <select id="selectedOption1" formControlName="selectedOption1" name="selectedOption1">
                       <option disabled  selected>Country</option>
                       <option>India</option>
                       <option>China </option>
@@ -142,34 +121,42 @@
                       <option>South Africa</option>
                       <option>Italy</option>
                   </select>
-                  <div class="div" *ngIf="registrationForm.get('selectedOption1')?.errors?.['required'] && registrationForm.get('selectedOption1')?.touched">
-                    Country is required.
-                  </div>
                </div> 
               <div class="input-field1">
-                <label for="address" style="color: white; font-size: 0px;">Address</label>
-                  <input type="text" placeholder="Address" formControlName="address" id="address" style="margin-top: 1rem;">
-                  <div class="div" *ngIf="registrationForm.get('address')?.errors?.['maxlength']">
-                    Address cannot exceed 30 characters.
-                  </div>
-                  <div class="div" *ngIf="registrationForm.get('address')?.errors?.['required'] && registrationForm.get('address')?.touched">
-                    Address is required.
-                  </div>
-                 
+                <label for="addressType" style="font-weight: bold;">Address</label>
+                  <select id="addressType" formControlName="addressType" name="addressType" (change)="onAddressTypeChange($event)" >
+                    <option value="" disabled>Select Address Type</option>
+                    <option value="Home">Home</option>
+                    <option value="Company">Company</option>
+                  </select>
               </div>
+              <div *ngIf="addressType === 'Home'">
+                <div>
+                  <label for="address1" style="font-weight: bold;">Address 1:</label>
+                  <input id="address1" formControlName="address1" name="address1" style="margin-top: 1.2rem; width: 70%; height: 25px;">
+                </div>
+                <div>
+                  <label for="address2" style="font-weight: bold;">Address 2:</label>
+                  <input id="address2" formControlName="address2" name="address2" style="margin-top: 1.2rem; width: 70%; height: 25px;">
+                </div>
+                </div>
+                <div *ngIf="addressType === 'Company'">
+                <div style="margin-top: 1.5rem;">
+                  <label for="companyAddress1" style="font-weight: bold;" >Company Address 1:</label>
+                  <input id="companyAddress1" formControlName="companyAddress1" name="companyAddress1" style="margin-top: 0.5rem; width: 55%; height: 25px;" >
+                </div>
+                <div>
+                  <label for="companyAddress2" style="font-weight: bold;">Company Address 2:</label>
+                  <input id="companyAddress2" formControlName="companyAddress2" name="companyAddress2" style="margin-top: 0.5rem; width: 55%; height: 25px;">
+                </div>
+                </div>
               <div class="input-field1">
                 <label for="tags" style="color: white; font-size: 0px;">Tags</label>
-                  <input type="text" placeholder="Tags" formControlName="tags" id="tags" style="margin-top: 1rem;">
-                  <div class="div" *ngIf="registrationForm.get('tags')?.errors?.['maxlength']">
-                    Tags cannot exceed 10 characters.
-                  </div>
-                  <div class="div" *ngIf="registrationForm.get('tags')?.errors?.['required'] && registrationForm.get('tags')?.touched">
-                    Tag is required.
-                  </div>
+                  <input type="text" placeholder="Tags" id="tags" name="tags" style="margin-top: 1rem;" formControlName="tags">
               </div>
               <div class="hobbies">
                   <h3>{{title}}</h3>
-                  <input type="text" placeholder="" #task id="hobbies">
+                  <input type="text" placeholder="" #task id="hobbies" formControlName="hobbies" name="hobbies">
                        <button (click)="addTask(task.value)">Add</button> 
                       <ul *ngFor="let item of list">
                       <li>{{item.name}}<i class="fa-solid fa-xmark" (click)="removeTask(item.id)"></i></li> 
@@ -182,7 +169,7 @@
               </div>
               <div class="subbtn">
                 <button>Cancel</button>
-                 <button type="submit" type="submit">Submit</button>
+                 <button type="submit">Submit</button>
               </div>
           </div>
           
